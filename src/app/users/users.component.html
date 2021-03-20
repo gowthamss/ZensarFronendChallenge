@@ -1,0 +1,52 @@
+<div class="page">
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="brand--logo">Zensar</div>
+            <ul class="nav--list">
+                <li class="nav--item">
+                    <a href="#" class="nav--link">
+                        Home
+                    </a>
+                </li>
+                <li class="nav--item">
+                    <a href="#" class="nav--link">
+                        About
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search">
+        <input type="search" name="search" id="search--profiles" class="search--profiles" placeholder="Search Profiles" [(ngModel)]="searchText" autofocus>
+    </section>
+    <div class="add--profile">
+        <button class="btn btn--add" (click)="addProfile()">Add Profile</button>
+    </div>
+
+    <!-- Profile Section -->
+    <section class="profile--section" id="profile--section">
+        <div class="card" *ngFor="let userProfile of userProfileData | search: searchText">
+            <div class="card--header">
+                <i class="fas fa-trash"></i>
+            </div>
+            <div class="card--image">
+                <img src="{{userProfile.Image}}" alt="{{userProfile.name}}" class="user--profile">
+            </div>
+            <div style="text-align: center; margin-top: 24px;">
+                <p class="card--text user--name">
+                    {{ userProfile.name }}
+                </p>
+            </div>
+            <div class="btn--container">
+                <button class="btn btn--edit" (click)="editProfile(userProfile.id)">Edit</button>
+                <button class="btn btn--remove" (click)="removeProfile(userProfile.id)">Delete</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer></footer>
+</div>
